@@ -1,5 +1,6 @@
 @CatalogAPI_HostAddress = https://localhost:5050
 @productId = 0197d974-7c10-49d5-8c54-2c7918605932
+@category = customer
 
 GET {{CatalogAPI_HostAddress}}/products
 Accept: application/json
@@ -7,6 +8,12 @@ Accept: application/json
 ###
 
 GET {{CatalogAPI_HostAddress}}/products/{{productId}}
+Accept: application/json
+
+###
+
+
+GET {{CatalogAPI_HostAddress}}/products/category/{{category}}
 Accept: application/json
 
 ###
@@ -20,5 +27,5 @@ Accept: application/json
   "Description": "A sample product description",
   "Price": 19.99,
   "ImageFile" : "sample_image.jpg",
-  "Categories": ["sample", "product"]
+  "Categories": ["another", "customer"]
 }
