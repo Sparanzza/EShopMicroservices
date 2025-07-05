@@ -8,6 +8,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Carter" Version="9.0.0" />
+        <PackageReference Include="Marten" Version="8.3.1" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.5"/>
     </ItemGroup>
 
@@ -17,4 +19,13 @@
       </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Products\DeleteProduct\" />
+      <Folder Include="Products\GetProductByCategory\" />
+      <Folder Include="Products\UpdateProduct\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj" />
+    </ItemGroup>
 </Project>
