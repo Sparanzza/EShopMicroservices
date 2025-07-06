@@ -28,7 +28,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "Name": "Sample Product 3",
+  "Name": "",
   "Description": "A sample product description",
   "Price": 19.99,
   "ImageFile" : "sample_image.jpg",
