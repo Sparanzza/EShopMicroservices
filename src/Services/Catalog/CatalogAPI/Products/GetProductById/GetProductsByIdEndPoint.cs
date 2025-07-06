@@ -1,7 +1,7 @@
-using BuildingBlocks.CQRS;
 using CatalogAPI.Models;
+using CatalogAPI.Products.GetProducts;
 
-namespace CatalogAPI.Products.GetProducts;
+namespace CatalogAPI.Products.GetProductById;
 
 public record GetProductByIdResponse(Product Product);
 

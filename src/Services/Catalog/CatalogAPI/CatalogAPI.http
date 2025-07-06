@@ -18,6 +18,11 @@ Accept: application/json
 
 ###
 
+DELETE {{CatalogAPI_HostAddress}}/products/{{productId}}
+Accept: application/json
+
+###
+
 POST {{CatalogAPI_HostAddress}}/products
 Content-Type: application/json
 Accept: application/json

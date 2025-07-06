@@ -2,7 +2,7 @@ using BuildingBlocks.CQRS;
 using CatalogAPI.Models;
 using Marten;
 
-namespace CatalogAPI.Products.GetProducts;
+namespace CatalogAPI.Products.UpdateProduct;
 
 public record UpdateProductCommand(
     Guid Id,

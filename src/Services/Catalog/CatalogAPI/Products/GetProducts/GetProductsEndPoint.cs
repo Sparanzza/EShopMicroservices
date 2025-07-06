@@ -3,7 +3,6 @@ using CatalogAPI.Models;
 
 namespace CatalogAPI.Products.GetProducts;
 
-// public record GetProductsQuery : IQuery<GetProductsResult>;
 public record GetProductsResponse(IEnumerable<Product> Products);
 
 public class GetProductsEndPoint : ICarterModule

@@ -2,9 +2,8 @@ using BuildingBlocks.CQRS;
 using CatalogAPI.Models;
 using CatalogAPI.Products.Exceptions;
 using Marten;
-using Marten.Linq.SoftDeletes;
 
-namespace CatalogAPI.Products.GetProducts;
+namespace CatalogAPI.Products.GetProductById;
 
 public record GetProductsByIdQuery(Guid Id) : IQuery<GetProductsByIdResult>;
 
