@@ -1,5 +1,5 @@
 @CatalogAPI_HostAddress = https://localhost:5050
-@productId = 0197d974-7c10-49d5-8c54-2c7918605932
+@productId = 0197dc3f-2cc5-4c8e-bd59-57e553bada2c
 @category = customer
 
 GET {{CatalogAPI_HostAddress}}/products
@@ -28,4 +28,19 @@ Accept: application/json
   "Price": 19.99,
   "ImageFile" : "sample_image.jpg",
   "Categories": ["another", "customer"]
+}
+
+###
+
+PUT {{CatalogAPI_HostAddress}}/products
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Id": "{{productId}}",
+  "Name": "2 Update Sample Product 3",
+  "Description": "Update  A sample product description",
+  "Price": 99.99,
+  "ImageFile" : "Update_sample_image.jpg",
+  "Categories": ["Update", "customer"]
 }

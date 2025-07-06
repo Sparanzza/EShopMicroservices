@@ -3,7 +3,6 @@ using CatalogAPI.Models;
 
 namespace CatalogAPI.Products.GetProducts;
 
-// public record GetProductsQuery : IQuery<GetProductsResult>;
 public record GetProductByIdResponse(Product Product);
 
 public class GetProductsByIdEndPoint : ICarterModule
@@ -19,7 +18,7 @@ public class GetProductsByIdEndPoint : ICarterModule
             .WithDescription("Retrieves a product by Id in the catalog.")
             .WithName("GetProductById")
             .WithTags("Products")
-            .Produces<GetProductsResult>(StatusCodes.Status200OK)
+            .Produces<GetProductByIdResponse>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest);
     }
 }
