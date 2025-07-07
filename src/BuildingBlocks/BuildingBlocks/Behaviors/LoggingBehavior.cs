@@ -7,7 +7,8 @@ namespace BuildingBlocks.Behaviors;
 
 public class LoggingBehavior<TRequest, TResponse>(ILogger<LoggingBehavior<TRequest, TResponse>> logger)
     : IPipelineBehavior<TRequest, TResponse>
-    where TRequest : ICommand<TResponse>
+    where TRequest : IRequest<TResponse>
+    where TResponse : notnull
 {
     public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next,
         CancellationToken cancellationToken)
@@ -25,8 +26,9 @@ public class LoggingBehavior<TRequest, TResponse>(ILogger<LoggingBehavior<TReque
                 "[PERFORMANCE] handle request = {@Request}, response={@Response}, details = {@Details}, timeTaken={@TimeTaken}",
                 typeof(TRequest).Name, typeof(TResponse).Name, request, timeTaken);
         }
-        
-        logger.LogInformation("[END] handle request = {@Request}, response={@Response}, details = {@Details}, timeTaken={@TimeTaken}",
+
+        logger.LogInformation(
+            "[END] handle request = {@Request}, response={@Response}, details = {@Details}, timeTaken={@TimeTaken}",
             typeof(TRequest).Name, typeof(TResponse).Name, request, timeTaken);
 
         return response;

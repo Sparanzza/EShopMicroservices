@@ -29,12 +29,11 @@ public class UpdateProductCommandValidator : AbstractValidator<UpdateProductComm
     }
 }
 
-public class UpdateProductQueryHandler(IDocumentSession session, ILogger<UpdateProductQueryHandler> logger)
+public class UpdateProductQueryHandler(IDocumentSession session)
     : ICommandHandler<UpdateProductCommand, UpdateProductResult>
 {
     public async Task<UpdateProductResult> Handle(UpdateProductCommand command, CancellationToken cancellationToken)
     {
-        logger.LogInformation("GetProducts handler called {@Command}", command);
         var product = await session.LoadAsync<Product>(command.Id, cancellationToken);
         if (product == null)
         {
@@ -49,7 +48,7 @@ public class UpdateProductQueryHandler(IDocumentSession session, ILogger<UpdateP
 
         session.Update(product);
         await session.SaveChangesAsync(cancellationToken);
-        
+
         return new UpdateProductResult(true);
     }
 }
