@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using BuildingBlocks.CQRS;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
@@ -10,7 +9,7 @@ public class LoggingBehavior<TRequest, TResponse>(ILogger<LoggingBehavior<TReque
     where TRequest : IRequest<TResponse>
     where TResponse : notnull
 {
-    public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next,
+    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next,
         CancellationToken cancellationToken)
     {
         logger.LogInformation("[START] handle request = {@Request}, response={@Response}, details = {@Details}",
@@ -18,7 +17,7 @@ public class LoggingBehavior<TRequest, TResponse>(ILogger<LoggingBehavior<TReque
 
         var timer = new Stopwatch();
         timer.Start();
-        var response = next(cancellationToken);
+        var response = await next(cancellationToken);
         var timeTaken = timer.Elapsed;
         if (timeTaken.Seconds > 3)
         {

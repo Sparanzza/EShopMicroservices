@@ -13,6 +13,12 @@ Accept: application/json
 ###
 
 
+GET {{CatalogAPI_HostAddress}}/products?pageNumber=2&pageSize=2
+Accept: application/json
+
+###
+
+
 GET {{CatalogAPI_HostAddress}}/products/category/{{category}}
 Accept: application/json
 

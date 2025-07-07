@@ -1,4 +1,5 @@
 using BuildingBlocks.Exceptions.Handler;
+using CatalogAPI.Data;
 using Marten;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,7 +22,15 @@ builder.Services.AddMarten(opts =>
     opts.Connection(builder.Configuration.GetConnectionString("CatalogConnection") ?? string.Empty);
 }).UseLightweightSessions();
 
+if (builder.Environment.IsDevelopment())
+{
+    // Enable the Marten Studio in development mode
+    builder.Services.InitializeMartenWith<CatalogInitialData>();
+}
+
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+
+
 var app = builder.Build();
 
 //Configure the HTTP request pipeline.
