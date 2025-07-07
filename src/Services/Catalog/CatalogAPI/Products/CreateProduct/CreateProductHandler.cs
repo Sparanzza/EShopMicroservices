@@ -26,24 +26,19 @@ public class CreateProductCommandValidator : AbstractValidator<CreateProductComm
     }
 }
 
-internal class CreateProductCommandHandler(IDocumentSession session, IValidator<CreateProductCommand> commandValidator)
+internal class CreateProductCommandHandler(IDocumentSession session, ILogger<CreateProductCommandHandler> logger)
     : ICommandHandler<CreateProductCommand, CreateProductResult>
 {
-    public async Task<CreateProductResult> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+    public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
     {
-        var validationResult = await commandValidator.ValidateAsync(request, cancellationToken);
-        if (!validationResult.IsValid)
-        {
-            throw new ValidationException(validationResult.Errors);
-        }
-
+        logger.LogInformation("Handling CreateProductCommand for product: {command}", command.Name);
         var product = new Product
         {
-            Name = request.Name,
-            Description = request.Description,
-            Categories = request.Categories,
-            ImageFile = request.ImageFile,
-            Price = request.Price
+            Name = command.Name,
+            Description = command.Description,
+            Categories = command.Categories,
+            ImageFile = command.ImageFile,
+            Price = command.Price
         };
 
         session.Store(product);

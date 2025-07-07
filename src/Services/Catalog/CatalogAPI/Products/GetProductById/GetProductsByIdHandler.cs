@@ -17,7 +17,7 @@ public class GetProductsByIdQueryHandler(IDocumentSession session, ILogger<GetPr
         logger.LogInformation("GetProductsByIdQueryHandler handler called {@Query}", query);
         var product = await session.LoadAsync<Product>(query.Id, cancellationToken);
         return product is null
-            ? throw new ProductNotFoundException()
+            ? throw new ProductNotFoundException(query.Id)
             : new GetProductsByIdResult(product);
     }
 }

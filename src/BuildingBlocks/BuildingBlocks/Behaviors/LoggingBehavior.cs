@@ -1,0 +1,34 @@
+using System.Diagnostics;
+using BuildingBlocks.CQRS;
+using MediatR;
+using Microsoft.Extensions.Logging;
+
+namespace BuildingBlocks.Behaviors;
+
+public class LoggingBehavior<TRequest, TResponse>(ILogger<LoggingBehavior<TRequest, TResponse>> logger)
+    : IPipelineBehavior<TRequest, TResponse>
+    where TRequest : ICommand<TResponse>
+{
+    public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next,
+        CancellationToken cancellationToken)
+    {
+        logger.LogInformation("[START] handle request = {@Request}, response={@Response}, details = {@Details}",
+            typeof(TRequest).Name, typeof(TResponse).Name, request);
+
+        var timer = new Stopwatch();
+        timer.Start();
+        var response = next(cancellationToken);
+        var timeTaken = timer.Elapsed;
+        if (timeTaken.Seconds > 3)
+        {
+            logger.LogWarning(
+                "[PERFORMANCE] handle request = {@Request}, response={@Response}, details = {@Details}, timeTaken={@TimeTaken}",
+                typeof(TRequest).Name, typeof(TResponse).Name, request, timeTaken);
+        }
+        
+        logger.LogInformation("[END] handle request = {@Request}, response={@Response}, details = {@Details}, timeTaken={@TimeTaken}",
+            typeof(TRequest).Name, typeof(TResponse).Name, request, timeTaken);
+
+        return response;
+    }
+}
