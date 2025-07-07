@@ -55,3 +55,11 @@ Accept: application/json
   "ImageFile" : "Update_sample_image.jpg",
   "Categories": ["Update", "customer"]
 }
+
+
+###
+
+GET {{CatalogAPI_HostAddress}}/health
+Accept: application/json
+
+###
