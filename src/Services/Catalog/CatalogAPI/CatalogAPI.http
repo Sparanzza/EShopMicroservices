@@ -1,4 +1,4 @@
-@CatalogAPI_HostAddress = https://localhost:5050
+@CatalogAPI_HostAddress = https://localhost:6060
 @productId = 0197dc3f-2cc5-4c8e-bd59-57e553bada2c
 @category = customer
 
