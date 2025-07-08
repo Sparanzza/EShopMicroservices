@@ -1,3 +1,7 @@
+using BuildingBlocks.Exceptions.Handler;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+
 var builder = WebApplication.CreateBuilder(args);
 var assembly = typeof(Program).Assembly;
 
@@ -9,6 +13,9 @@ builder.Services.AddMediatR(config =>
     config.AddOpenBehavior(typeof(ValidationBehavior<,>));
     config.AddOpenBehavior(typeof(LoggingBehavior<,>));
 });
+
+builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+builder.Services.AddHealthChecks();
 
 builder.Services.AddMarten(opts =>
 {
@@ -30,5 +37,13 @@ if (app.Environment.IsDevelopment())
 
 app.MapCarter();
 app.UseHttpsRedirection();
+
+app.UseHealthChecks("/health",
+    new HealthCheckOptions
+    {
+        Predicate = _ => true,
+        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+    });
+app.UseExceptionHandler(options => { });
 
 app.Run();

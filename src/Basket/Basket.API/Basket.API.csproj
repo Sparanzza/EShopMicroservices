@@ -16,4 +16,10 @@
       <ProjectReference Include="..\..\BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="HealthChecks.UI.Client">
+        <HintPath>..\..\..\..\..\..\.nuget\packages\aspnetcore.healthchecks.ui.client\9.0.0\lib\net8.0\HealthChecks.UI.Client.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>
