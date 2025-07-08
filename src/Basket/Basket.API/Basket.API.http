@@ -4,3 +4,30 @@ GET {{BasketAPI_HostAddress}}/basket/swn
 Accept: application/json
 
 ###
+
+POST {{BasketAPI_HostAddress}}/basket
+Accept: application/json
+Content-Type: application/json
+
+{
+  "cart": 
+  {
+    "userName": "swn",
+    "items": [
+      {
+        "productId": "0197dc3f-2cc5-4c8e-bd59-57e553bada2c",
+        "quantity": 100,
+        "price": 19.99,
+        "color": "red",
+        "ProductName": "Sega Mega Drive"
+      },
+      {
+        "productId": "0197dc3f-2cc5-4c8e-bd59-57e553bada21",
+        "quantity": 300,
+        "price": 29.99,
+        "color": "green",
+        "ProductName": "Iphone 14 Pro"
+      }
+    ]
+  }
+}

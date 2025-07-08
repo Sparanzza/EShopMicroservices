@@ -4,13 +4,13 @@ namespace Basket.API.Basket.GetBasket;
 
 public record GetBasketQuery(string UserName) : IQuery<GetBaskteResult>;
 
-public record GetBaskteResult(ShoppingCart ShoppingCart);
+public record GetBaskteResult(ShoppingCart Cart);
 
 public class GetBasketQueryHandler(IBasketRepository repository) : IQueryHandler<GetBasketQuery, GetBaskteResult>
 {
     public async Task<GetBaskteResult> Handle(GetBasketQuery query, CancellationToken cancellationToken)
     {
         var result = await repository.GetBasketAsync(query.UserName, cancellationToken);
-        return result.Adapt<GetBaskteResult>();
+        return new GetBaskteResult(result);
     }
 }
