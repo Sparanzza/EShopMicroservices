@@ -2,7 +2,7 @@ namespace Basket.API.Basket.GetBasket;
 
 public record StoreBasketCommand(ShoppingCart Cart) : ICommand<StoreBasketResult>;
 
-public record StoreBasketResult(string Username);
+public record StoreBasketResult(string UserName);
 
 public class StoreBasketCommandValidator : AbstractValidator<StoreBasketCommand>
 {

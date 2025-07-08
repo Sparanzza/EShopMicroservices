@@ -5,6 +5,12 @@ Accept: application/json
 
 ###
 
+
+DELETE {{BasketAPI_HostAddress}}/basket/swn
+Accept: application/json
+
+###
+
 POST {{BasketAPI_HostAddress}}/basket
 Accept: application/json
 Content-Type: application/json
