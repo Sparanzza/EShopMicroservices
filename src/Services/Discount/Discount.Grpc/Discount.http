@@ -5,5 +5,38 @@
 GRPC  {{grpc_host}}GetDiscount
 
 {
-  "productName": "IPhone X"
+  "productName": "IPhone 12"
+}
+
+###
+
+GRPC  {{grpc_host}}CreateDiscount
+
+{
+  "coupon": {
+    "productName": "IPhone 12",
+    "description": "Discount IPhone 12",
+    "amount": 300
+  }
+}
+
+###
+
+GRPC  {{grpc_host}}UpdateDiscount
+
+{
+  "coupon": {
+    "id": "0",
+    "productName": "IPhone 13",
+    "description": "Discount IPhone 13",
+    "amount": 200
+  }
+}
+
+###
+
+GRPC  {{grpc_host}}DeleteDiscount
+
+{
+    "productName": "IPhone 12"
 }
