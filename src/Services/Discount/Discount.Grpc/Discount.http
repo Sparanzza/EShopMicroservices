@@ -1,0 +1,5 @@
+@grpc_host= grpc://localhost:5002
+
+###
+
+GRPC  {{grpc_host}}/greet.Greeter/SayHello
