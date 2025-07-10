@@ -3,3 +3,7 @@
 ###
 
 GRPC  {{grpc_host}}GetDiscount
+
+{
+  "productName": "IPhone X"
+}
