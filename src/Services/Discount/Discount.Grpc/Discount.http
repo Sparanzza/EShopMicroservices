@@ -1,5 +1,5 @@
-@grpc_host= grpc://localhost:5002
+@grpc_host= grpc://localhost:5002/discount.DiscountProtoService/
 
 ###
 
-GRPC  {{grpc_host}}/greet.Greeter/SayHello
+GRPC  {{grpc_host}}GetDiscount
