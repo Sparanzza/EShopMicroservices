@@ -70,11 +70,11 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
-      - ConnectionStrings__DiscountDb=Data Source=/app/datadb/discount.db;Mode=ReadWriteCreate
+      - ConnectionStrings__DiscountDb=Data Source=/app/discount.db;Mode=ReadWriteCreate
     ports:
       - "6002:8080"
       - "6062:8081"
     volumes:
-      - discount_data:/app/datadb
+      - discount_data:/app
       - ~/.microsoft/usersecrets:/home/app/.microsoft/usersecrets:ro
       - ~/.aspnet/https:/https:ro
