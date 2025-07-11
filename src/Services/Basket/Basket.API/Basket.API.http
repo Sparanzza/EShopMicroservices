@@ -1,4 +1,4 @@
-@BasketAPI_HostAddress = https://localhost:5051
+@BasketAPI_HostAddress = https://localhost:6061
 
 GET {{BasketAPI_HostAddress}}/basket/swn
 Accept: application/json

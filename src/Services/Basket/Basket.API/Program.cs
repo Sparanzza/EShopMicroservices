@@ -34,6 +34,11 @@ builder.Services.AddMarten(opts =>
 builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(options =>
     options.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"] ?? throw new InvalidOperationException())
 );
+    
+//     .ConfigurePrimaryHttpMessageHandler(()=> new HttpClientHandler
+// {
+//     ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+// });
 
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 builder.Services.Decorate<IBasketRepository, CachedBasketRepository>();
