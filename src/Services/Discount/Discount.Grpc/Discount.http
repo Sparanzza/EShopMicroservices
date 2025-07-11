@@ -1,4 +1,4 @@
-@grpc_host= grpc://localhost:5002/discount.DiscountProtoService/
+@grpc_host= grpcs://localhost:5052/discount.DiscountProtoService/
 
 ###
 

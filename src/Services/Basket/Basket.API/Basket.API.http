@@ -1,4 +1,4 @@
-@BasketAPI_HostAddress = https://localhost:6061
+@BasketAPI_HostAddress = https://localhost:5051
 
 GET {{BasketAPI_HostAddress}}/basket/swn
 Accept: application/json
@@ -37,7 +37,7 @@ Content-Type: application/json
         "quantity": 300,
         "price": 29.99,
         "color": "green",
-        "ProductName": "Iphone 14 Pro"
+        "ProductName": "IPhone X"
       }
     ]
   }
