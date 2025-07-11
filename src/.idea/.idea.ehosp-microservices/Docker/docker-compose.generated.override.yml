@@ -37,3 +37,21 @@ services:
     - "/home/sparanzza/Code/sandbox/EShopMicroservices/src:/src:rw"
     - "/home/sparanzza/.nuget/packages:/home/app/.nuget/packages"
     working_dir: "/app"
+  discount.grpc:
+    build:
+      context: "/home/sparanzza/Code/sandbox/EShopMicroservices/src"
+      dockerfile: "Services/Discount/Discount.Grpc/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net9.0/Discount.Grpc.dll"
+    environment:
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "discount.grpc:dev"
+    ports: []
+    volumes:
+    - "/home/sparanzza/Code/sandbox/EShopMicroservices/src/Services/Discount/Discount.Grpc:/app:rw"
+    - "/home/sparanzza/Code/sandbox/EShopMicroservices/src:/src:rw"
+    - "/home/sparanzza/.nuget/packages:/root/.nuget/packages"
+    working_dir: "/app"

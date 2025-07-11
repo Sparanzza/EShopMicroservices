@@ -1,5 +1,5 @@
 ﻿FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
-USER $APP_UID
+#USER $APP_UID
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
@@ -19,5 +19,13 @@ RUN dotnet publish "./Discount.Grpc.csproj" -c $BUILD_CONFIGURATION -o /app/publ
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Discount.Grpc.dll"]
+
+RUN mkdir -p /app/datadb && chmod 777 /app/datadb
+
+#COPY --from=publish /app/publish .
+#ENTRYPOINT ["dotnet", "Discount.Grpc.dll"]
+
+COPY --from=build /src/Services/Discount/Discount.Grpc/entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
+ENTRYPOINT ["/app/entrypoint.sh"]
